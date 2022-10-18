@@ -10,7 +10,7 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
    friendlies: List of (x,y) coords for placing owned pieces
    dimensions: Board dimensions
    showLabels: Show content (highlight is always shown)
-      reverse: Use reverse highlighting
+      reverse: Use 'reverse' (enemy) highlighting
 
     """
     def _gen(grid, square):
@@ -19,13 +19,13 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         X = "L" if showLabels else "H"
         if reverse:
             content = [
-                ("1", Colors.color(f"{X}7")),
-                ("2", Colors.color(f"{X}6")),
-                ("3", Colors.color(f"{X}5")),
-                ("4", Colors.color(f"{X}4")),
-                ("5", Colors.color(f"{X}3")),
-                ("6", Colors.color(f"{X}2")),
-                ("7", Colors.color(f"{X}1")),
+                ("1", Colors.color(f"{X}4")),
+                ("2", Colors.color(f"{X}3")),
+                ("3", Colors.color(f"{X}2")),
+                ("4", Colors.color(f"{X}1")),
+                ("5", Colors.color(f"{X}6")),
+                ("6", Colors.color(f"{X}5")),
+                ("7", Colors.color(f"{X}7")),
             ]
         else:
             content = [
