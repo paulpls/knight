@@ -10,12 +10,12 @@ license: [GPL 3.0](./LICENSE.md)
 
 Generates a map based on the movements of the knight piece in chess.
 
-Given coordinates `(x,y)`, the knight can move to squares within the following set:
+Given coordinates `(X,Y)`, the knight can move to squares within the following set:
 
                                 ⎛              ⎞     ⎛              ⎞
-                     N(x,y)  =  ⎜ X ± A, Y ± B ⎟  ⋃  ⎜ X ± B, Y ± A ⎟
+                     N(X,Y)  =  ⎜ X ± A, Y ± B ⎟  ⋃  ⎜ X ± B, Y ± A ⎟
                                 ⎝              ⎠     ⎝              ⎠
-                             for a=1, b=2
+                             for A=1, B=2
 
 The knight's complex movement gives rise to many interesting patterns and scenarios. By making these patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around the board.
 
