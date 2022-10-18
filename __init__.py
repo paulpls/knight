@@ -46,6 +46,20 @@ class KnightGrid:
         return self.grid.get(coords, None)
 
 
+    def display(self, showLabels=True):
+        """
+            Return a string representation of the grid for display purposes.
+
+        """
+        out = []
+        # Iterate through the grid by row and collect the outputs
+        for y in range(self.ymax):
+            out.append("".join([
+                self.grid[(x,y)].display(showLabels=showLabels) for x in range(self.xmax)
+            ]))
+        return "\n".join(out)
+
+
 
 class Square:
 
@@ -67,13 +81,13 @@ class Square:
         return self.content is None
 
 
-    def display(self, visible=True):
+    def display(self, showLabels=True):
         """
-            Return a string representation of the square for output.
+            Return a string representation of the square for display purposes.
 
         """
         color = self.highlight if self.highlight else self.color
-        content = self.content if visible and self.content else " "
+        content = self.content if showLabels and self.content else " "
         reset = Colors.color("R")
         return f"{color}{content} {reset}"
 
