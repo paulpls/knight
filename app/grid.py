@@ -12,25 +12,34 @@ class Grid:
         def _generate(dimensions):
             """Helper method for generating the grid."""
             xmax, ymax = dimensions
-            grid = {}
+            content = "  "
             # Create new squares, alternating the colors in a checkered pattern.
+            grid = {}
             for x in range(xmax):
                 if x % 2 == 0:
                     # Even rows start with a light square for an even column,
                     # and a dark square for an odd column.
                     for y in range(ymax):
                         if y % 2 == 0:
-                            grid[(x,y)] = Square(color=Colors.color("L"))
+                            color = Colors.color("L")
                         else:
-                            grid[(x,y)] = Square(color=Colors.color("D"))
+                            color = Colors.color("D")
+                        grid[(x,y)] = Square(
+                            color = color,
+                            content = content,
+                        )
                 else:
                     # Odd rows start with a dark square for an even column,
                     # and a light square for an odd column.
                     for y in range(ymax):
                         if y % 2 == 0:
-                            grid[(x,y)] = Square(color=Colors.color("D"))
+                            color = Colors.color("D")
                         else:
-                            grid[(x,y)] = Square(color=Colors.color("L"))
+                            color = Colors.color("L")
+                        grid[(x,y)] = Square(
+                            color = color,
+                            content = content,
+                        )
             return grid
         # Generate the grid
         self.grid = _generate(dimensions)
@@ -87,9 +96,9 @@ class Square:
 
         """
         color = self.highlight if self.highlight else self.color
-        content = self.content if showLabels and self.content else " "
+        content = self.content if showLabels and self.content else "  "
         reset = Colors.color("R")
-        return f"{color}{content} {reset}"
+        return f"{color}{content}{reset}"
 
 
 

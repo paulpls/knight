@@ -15,7 +15,7 @@ class Colors:
         return {
             # Common
             'R': "\033[0m",         # Reset
-            'D': "\033[7;0;30m",    # Dark squares
+            'D': "\033[7;0;40m",    # Dark squares
             'L': "\033[7;1;30m",    # Light squares
             'K': "\033[7;1;37m",    # Knight
             'F': "\033[7;1;34m",    # Friendly pieces
@@ -46,9 +46,10 @@ class Colors:
         """
         for i in range(10):
             for j in range(10):
-                print(f"\033[7;0;{i}{j}m<7;0;{i}{j}m\t>")
-                print(f"\033[7;1;{i}{j}m<7;1;{i}{j}m\t>")
-        print(COLOR['r'])
+                print(f"\033[7;0;{i}{j}m<7;0;{i}{j}m>\033[0m")
+                print(f"\033[7;1;{i}{j}m<7;1;{i}{j}m>\033[0m")
+        # Reset color to avoid artifacts
+        print(Colors.color('R'))
 
 
 
