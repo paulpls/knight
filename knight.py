@@ -40,7 +40,7 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
             #   attacking knight. Though there are further squares that may take longer,
             #   in terms of a typical chessboard, some of these destinations are close
             #   enough to the knight's starting square that it can really present a
-            #   difficulty getting there without sacrificing time,
+            #   difficulty getting there without sacrificing time.
             content = [
                 ("1", Colors.color(f"{X}4")),
                 ("2", Colors.color(f"{X}3")),
