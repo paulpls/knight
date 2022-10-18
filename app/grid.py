@@ -12,7 +12,7 @@ class Grid:
         def _generate(dimensions):
             """Helper method for generating the grid."""
             xmax, ymax = dimensions
-            content = "  "
+            content = " "
             # Create new squares, alternating the colors in a checkered pattern.
             grid = {}
             for x in range(xmax):
@@ -63,13 +63,19 @@ class Grid:
         out = []
         # Iterate through the grid by row and collect the outputs
         for y in range(self.ymax):
-            out.append("".join([
-                self.grid[(x,y)].display(showLabels=showLabels) for x in range(self.xmax)
-            ]))
+            out.append(
+                "".join(
+                    [
+                        self.grid[(x,y)].display(
+                            showLabels = showLabels
+                        ) for x in range(self.xmax)
+                    ]
+                )
+            )
         return "\n".join(out)
 
 
-    def put(self, coords, content="N ", color=Colors.color("N")):
+    def put(self, coords, content="N", color=Colors.color("N")):
         """
             Put a piece on the board. Defaults to a knight with a knight label.
 
@@ -80,10 +86,69 @@ class Grid:
             square.color = color
 
 
+    def generate(self, squares=[(3,4)], place=False, content=None, color=None):
+        """
+            Generate a list of squares that are a knight's move from the square(s)
+                provided. General formula is as follows:
+                 
+                >       N(a,b) = (x±a, y±b) ∪ (x±b, y±a)
+                >         for a=1, b=2
+                 
+        """
+        def valid(square):
+            """Check for validity against the grid dimensions."""
+            x,y = square
+            xmax = self.xmax
+            ymax = self.ymax
+            return all([
+                0 <= x <= xmax,
+                0 <= y <= ymax,
+            ])
+
+        def replace(square, content):
+            """True if square is appropriate to replace."""
+            if square.content:
+                return all([
+                    square.content not in ["N","F"],
+                    square.content > content,
+                ])
+            else:
+                return True
+    
+        def gen(square):
+            """Generate new squares based on knight movements."""
+            out = []
+            x,y = square
+            # Get a new list of available squares according to the set defined above
+            for s in [
+                (x+1, y+2), (x+1, y-2), # +1,+2  +1,-2
+                (x-1, y+2), (x-1, y-2), # -1,+2  -1,-2
+                (x+2, y+1), (x+2, y-1), # +2,+1  +2,-1
+                (x-2, y+1), (x-2, y-1), # -2,+1  -2,-2
+            ]:
+                if valid(s):
+                    out.append(s)
+            return out
+    
+        next = []
+        # Begin with provided squares
+        for square in squares:
+            # Generate new squares
+            for new in gen(square):
+                # Find new squares in grid
+                gridSquare = self.find(new)
+                if gridSquare is not None:
+                    if place: 
+                        if replace(gridSquare, content):
+                            self.place(new, content, color)
+                            next.append(new)
+        return next
+
+
 
 class Square:
 
-    def __init__(self, color=Colors.color("R"), highlight=None, content=None):
+    def __init__(self, color=Colors.color("R"), content=None):
         """
             Instance of a square in the grid.
 
@@ -106,9 +171,9 @@ class Square:
 
         """
         color = self.color
-        content = self.content if showLabels and self.content else "  "
+        content = self.content if showLabels and self.content else " "
         reset = Colors.color("R")
-        return f"{color}{content}{reset}"
+        return f"{color}{content} {reset}"
 
 
 
