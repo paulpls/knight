@@ -8,6 +8,10 @@ class Colors:
 
     @staticmethod
     def color(c):
+        """
+            Get a color from the ones available in the dictionary.
+
+        """
         return {
             # Common
             'R': "\033[0m",         # Reset
@@ -32,6 +36,19 @@ class Colors:
             'H6': "\033[7;0;44m",   # 2 moves away
             'H7': "\033[7;0;40m",   # 2 moves away
         }.get(c, None)
+
+
+    @staticmethod
+    def test():
+        """
+            Test the terminal's color output by iterating through each color escape.
+
+        """
+        for i in range(10):
+            for j in range(10):
+                print(f"\033[7;0;{i}{j}m<7;0;{i}{j}m\t>")
+                print(f"\033[7;1;{i}{j}m<7;1;{i}{j}m\t>")
+        print(COLOR['r'])
 
 
 
