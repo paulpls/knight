@@ -112,9 +112,9 @@ class Grid:
         return "\n".join(out)
 
 
-    def put(self, coords, content="N", color=Colors.color("P")):
+    def put(self, coords, content="F", color=Colors.color("F")):
         """
-            Put a piece on the board. Defaults to a knight with a knight label.
+            Put a piece on the board. Defaults to a friendly piece.
 
         """
         square = self.grid.get(coords, None)
