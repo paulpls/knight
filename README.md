@@ -11,11 +11,7 @@ Generates a map based on the movements of the knight piece in chess. The current
 ### SYNOPSIS
 
 ```
-knight [OPTIONS]
-```
-
-```
-knight [OPTIONS] [-n <num>] [-f [(x0,y0), ...]]
+python3 knight.py
 ```
 
 
