@@ -65,7 +65,7 @@ The following options will be available for modifying the command output.
 
 ## LICENSE
 
-Copyright (C) 2022  (paulpls)[https://github.com/paulpls]
+Copyright (C) 2022  [paulpls](https://github.com/paulpls)
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
