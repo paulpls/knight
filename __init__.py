@@ -28,9 +28,9 @@ class KnightGrid:
                     # and a light square for an odd column.
                     for y in range(ymax):
                         if y % 2 == 0:
-                            grid[(x,y)] = Square(color=Colors.color('D'))
+                            grid[(x,y)] = Square(color=Colors.color("D"))
                         else:
-                            grid[(x,y)] = Square(color=Colors.color('L'))
+                            grid[(x,y)] = Square(color=Colors.color("L"))
             return grid
         # Generate the grid
         self.grid = _generate(dimensions)
