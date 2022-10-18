@@ -3,19 +3,19 @@
 author: [paulpls](https://github.com/paulpls)
 
 
-### PURPOSE
+## PURPOSE
 
 Generates a map based on the movements of the knight piece in chess. The current location of the knight(s) are marked on the board, and each square is labeled according to the number of moves it would take to reach it.
 
 
-### SYNOPSIS
+## SYNOPSIS
 
 ```
 python3 knight.py
 ```
 
 
-### OPTIONS (TODO)
+## OPTIONS (TODO)
 
 The following options will be available for modifying the command output.
 
@@ -30,7 +30,7 @@ The following options will be available for modifying the command output.
 | -f `[(<x0>,<y0>), ...]`                   | Place friendly pieces on each square listed. The knight is unable to move to a piece occupied by a friendly piece, so this option can be used to add complexity to the output. |
 
 
-### SCREENSHOTS
+## SCREENSHOTS
 
 **[1]** *Knight in the center, no labels*
 
@@ -60,6 +60,25 @@ The following options will be available for modifying the command output.
 **[6]** *Knight in corner, unblocked*
 
 ![knight6](https://user-images.githubusercontent.com/62158353/196326447-33f0a8c7-9d38-4cc1-8efc-9af690a828a5.png)
+
+
+
+## LICENSE
+
+Copyright (C) 2022  (paulpls)[https://github.com/paulpls]
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 
