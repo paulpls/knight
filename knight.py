@@ -39,7 +39,8 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
             ]
         # Setup initial square
         N = square
-        g.put(N, "N", Colors.color("N"))
+        g.put(N, "N", Colors.square_color(N))
+        # Add the initial square to a list so we can generate more
         N = [N]
         for c in content:
             N = g.generate(
@@ -48,12 +49,16 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
                 content = c[0], 
                 color = c[1],
             )
+    
+    def _color():
+        """Returns the color of a piece (dark/light square)."""
+
 
     # Initialize the grid
     g = Grid(dimensions)
     # Place friendlies
     for f in friendlies:
-        g.put(f, "F", Colors.color("F"))
+        g.put(f, "F", Colors.square_color(f))
     # Place knights and color the map according to movement
     for square in knights:
         _gen(g, square)
@@ -66,11 +71,11 @@ if __name__ == "__main__":
 
     # Setup parameters
     knights = [
-        (3,3),
+        (7,7),
     ]
     friendlies = []
-    dimensions = (8,8)
-    showLabels = False
+    dimensions = (16,16)
+    showLabels = True
     reverse = False
 
     # Do the thing

@@ -16,30 +16,11 @@ class Grid:
             # Create new squares, alternating the colors in a checkered pattern.
             grid = {}
             for x in range(xmax):
-                if x % 2 == 0:
-                    # Even rows start with a light square for an even column,
-                    # and a dark square for an odd column.
-                    for y in range(ymax):
-                        if y % 2 == 0:
-                            color = Colors.color("L")
-                        else:
-                            color = Colors.color("D")
-                        grid[(x,y)] = Square(
-                            color = color,
-                            content = content,
-                        )
-                else:
-                    # Odd rows start with a dark square for an even column,
-                    # and a light square for an odd column.
-                    for y in range(ymax):
-                        if y % 2 == 0:
-                            color = Colors.color("D")
-                        else:
-                            color = Colors.color("L")
-                        grid[(x,y)] = Square(
-                            color = color,
-                            content = content,
-                        )
+                for y in range(ymax):
+                    grid[(x,y)] = Square(
+                        color = Colors.square_color((x,y)),
+                        content = content,
+                    )
             return grid
         # Generate the grid
         self.grid = _generate(dimensions)
@@ -75,7 +56,7 @@ class Grid:
         return "\n".join(out)
 
 
-    def put(self, coords, content="N", color=Colors.color("N")):
+    def put(self, coords, content="N", color=Colors.color("P")):
         """
             Put a piece on the board. Defaults to a knight with a knight label.
 
@@ -170,8 +151,11 @@ class Square:
     def display(self, showLabels=True):
         """
             Return a string representation of the square for display purposes.
+            Labels are always shown for pieces.
 
         """
+        if self.content in ["N", "F"]:
+            showLabels = True
         color = self.color
         content = self.content if showLabels and self.content else " "
         reset = Colors.color("R")

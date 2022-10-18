@@ -16,9 +16,7 @@ class Colors:
             # Common
             'R': "\033[0m",         # Reset
             'D': "\033[7;0;40m",    # Dark squares
-            'L': "\033[7;1;30m",    # Light squares
-            'N': "\033[7;1;37m",    # Knight
-            'F': "\033[7;1;34m",    # Friendly pieces
+            'L': "\033[7;0;38m",    # Light squares
             # Labels
             'L1': "\033[0;32m",     # 1 move away
             'L2': "\033[0;33m",     # 2 moves away
@@ -36,6 +34,28 @@ class Colors:
             'H6': "\033[7;0;44m",   # 2 moves away
             'H7': "\033[7;0;40m",   # 2 moves away
         }.get(c, None)
+
+
+    @staticmethod
+    def square_color(xy):
+        """
+            Return the color of a piece depending on if it is on a dark or a light square.
+            
+            Even rows have a light square for an even column, and a dark square for an odd
+            column. The inverse is true for odd rows.
+
+        """
+        x,y = xy
+        if x % 2 == 0:
+            if y % 2 == 0:
+                return Colors.color("L")
+            else:
+                return Colors.color("D")
+        else:
+            if y % 2 == 0:
+                return Colors.color("D")
+            else:
+                return Colors.color("L")
 
 
     @staticmethod
