@@ -6,6 +6,7 @@ author: [paulpls](https://github.com/paulpls)
 license: [GPL 3.0](./LICENSE.md)  
   
   
+
 ## PURPOSE
   
 Generates a map based on the movements of the knight piece in chess.
@@ -14,19 +15,22 @@ Given coordinates `(x,y)`, the knight can move to squares within the following s
   
                                                                      
                      N(x,y)  =  ( x ± a, y ± b )  ∪  ( x ± b, y ± a )
-                                                                     
                              for a=1, b=2
   
-The knight's complex movement gives rise to many interesting patterns and scenarios. Because the movement vector is not an pair of even or odd numbers, the knight is forced to change color each time it moves. Due to this, it can only attack squares of an opposite color to its own. Moreover, once the knight moves, it will be able to attack only the same colored squares as that from which it came. This color-swapping movement vector makes some movements quick, but can be unforgiving in other cases. By making these patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around its environment.
+The knight's complex movement gives rise to many interesting patterns and scenarios. Because the movement vector is not an pair of even or odd numbers, the knight is forced to change color each time it moves. Due to this, it can only attack squares of an opposite color to its own. Moreover, once the knight moves, it will be able to attack only the same colored squares as that from which it came.
+  
+This color-swapping movement vector makes some movements quick, but can be unforgiving in other cases. By making these patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around its environment.
   
 Output settings can be modified in at the bottom of `knight.py`. By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied. These settings will eventually be turned into command-line options as described below.
   
   
+
 ## SYNOPSIS
   
 ```
 python knight.py
 ```
+  
   
   
 ## OPTIONS (TODO)
@@ -44,9 +48,11 @@ The following options will be available for modifying the command output.
 | -f `[(<x0>,<y0>), ...]`                   | Place friendly pieces on each square listed. The knight is unable to move to a piece occupied by a friendly piece, so this option can be used to add complexity to the output. |
   
   
+
 ## DEPENDENCIES
 - python *(3.8.10)*
   
+
   
 ## LICENSE
   
@@ -65,6 +71,7 @@ Copyright (C) 2022  [paulpls](https://github.com/paulpls)
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
   
+
   
 # SCREENSHOTS
   
