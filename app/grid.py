@@ -95,7 +95,7 @@ class Grid:
                 >         for a=1, b=2
                  
         """
-        def valid(square):
+        def _valid(square):
             """Check for validity against the grid dimensions."""
             x,y = square
             xmax = self.xmax
@@ -105,7 +105,7 @@ class Grid:
                 0 <= y <= ymax,
             ])
 
-        def replace(square, content):
+        def _replace(square, content):
             """True if square is appropriate to replace."""
             if square.content:
                 return all([
@@ -115,7 +115,7 @@ class Grid:
             else:
                 return True
     
-        def gen(square):
+        def _gen(square):
             """Generate new squares based on knight movements."""
             out = []
             x,y = square
@@ -126,7 +126,7 @@ class Grid:
                 (x+2, y+1), (x+2, y-1), # +2,+1  +2,-1
                 (x-2, y+1), (x-2, y-1), # -2,+1  -2,-2
             ]:
-                if valid(s):
+                if _valid(s):
                     out.append(s)
             return out
     
@@ -134,12 +134,12 @@ class Grid:
         # Begin with provided squares
         for square in squares:
             # Generate new squares
-            for new in gen(square):
+            for new in _gen(square):
                 # Find new squares in grid
                 gridSquare = self.find(new)
                 if gridSquare is not None:
                     if place: 
-                        if replace(gridSquare, content):
+                        if _replace(gridSquare, content):
                             self.place(new, content, color)
                             next.append(new)
         return next
