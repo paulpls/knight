@@ -69,6 +69,17 @@ class Grid:
         return "\n".join(out)
 
 
+    def put(self, coords, content="N ", color=Colors.color("N")):
+        """
+            Put a piece on the board. Defaults to a knight with a knight label.
+
+        """
+        square = self.grid.get(coords, None)
+        if square:
+            square.content = content
+            square.color = color
+
+
 
 class Square:
 
@@ -78,7 +89,6 @@ class Square:
 
         """
         self.color = color
-        self.highlight = highlight
         self.content = content
 
 
@@ -95,7 +105,7 @@ class Square:
             Return a string representation of the square for display purposes.
 
         """
-        color = self.highlight if self.highlight else self.color
+        color = self.color
         content = self.content if showLabels and self.content else "  "
         reset = Colors.color("R")
         return f"{color}{content}{reset}"

@@ -17,7 +17,7 @@ class Colors:
             'R': "\033[0m",         # Reset
             'D': "\033[7;0;40m",    # Dark squares
             'L': "\033[7;1;30m",    # Light squares
-            'K': "\033[7;1;37m",    # Knight
+            'N': "\033[7;1;37m",    # Knight
             'F': "\033[7;1;34m",    # Friendly pieces
             # Labels
             'L1': "\033[0;32m",     # 1 move away
