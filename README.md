@@ -5,7 +5,7 @@ author: [paulpls](https://github.com/paulpls)
 
 ## PURPOSE
 
-Generates a map based on the movements of the knight piece in chess. The current location of the knight(s) are marked on the board, and each square is labeled according to the number of moves it would take to reach it.
+Generates a map based on the movements of the knight piece in chess. The current location of the knight is marked on the board, and each square is labeled according to the number of moves it would take to reach it.
 
 
 ## SYNOPSIS
