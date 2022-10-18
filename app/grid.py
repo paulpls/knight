@@ -13,7 +13,8 @@ class Grid:
             """Helper method for generating the grid."""
             xmax, ymax = dimensions
             content = None
-            # Create new squares, alternating the colors in a checkered pattern.
+            # Create new squares, alternating the colors in a checkered pattern
+            # using square_color()
             grid = {}
             for x in range(xmax):
                 for y in range(ymax):
@@ -28,12 +29,50 @@ class Grid:
         self.xmax, self.ymax = dimensions
 
 
+    def test(self, coords, silent=False, purpose=None):
+        """
+            Test coords for validity within bounds, raising an exception if not,
+                unless silenced. Returns boolean result of test.
+
+            An optional string `purpose` can be provided which is added to any
+                error messages that arise.
+
+        """
+        result = False
+        try:
+            x,y = coords
+            valid = (
+                x >= 0,
+                x <= self.xmax,
+                y >= 0,
+                y <= self.ymax,
+            )
+            assert all(valid)
+            result = True
+        # Scary-colored error message for out-of-bounds coordinates 
+        except AssertionError as e:
+            if not silent:
+                color = Colors.color("L4")
+                reset = Colors.color("R")
+                purpose = "<none>" if purpose is None else f"<{purpose}>"
+                err = f"ERR: {purpose} Coordinates ({x},{y}) are not within bounds ({self.xmax},{self.ymax})"
+                msg = f"{color}{err}{reset}"
+                print(msg)
+        # Let other errors pass silently
+        except Exception as e:
+            pass
+        # Return the result
+        return result
+
+
     def get(self, coords):
         """
             Get a square from the grid using the provided (x,y) coordinates.
 
         """
-        return self.grid.get(coords, None)
+        if self.test(coords, purpose="method Grid.get()"):
+            # Return grid square at coords, or None
+            return self.grid.get(coords, None)
 
 
     def display(self, showLabels=True):
@@ -76,16 +115,6 @@ class Grid:
                 >         for a=1, b=2
                  
         """
-        def _valid(square):
-            """Check for validity against the grid dimensions."""
-            x,y = square
-            xmax = self.xmax
-            ymax = self.ymax
-            return all([
-                0 <= x <= xmax,
-                0 <= y <= ymax,
-            ])
-
         def _replace(square, content):
             """True if square is appropriate to replace."""
             if square.content:
@@ -107,7 +136,7 @@ class Grid:
                 (x+2, y+1), (x+2, y-1), # +2,+1  +2,-1
                 (x-2, y+1), (x-2, y-1), # -2,+1  -2,-2
             ]:
-                if _valid(s):
+                if self.test(s, silent=True):
                     out.append(s)
             return out
     

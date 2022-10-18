@@ -26,7 +26,7 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
       knights: List of (x,y) coords for placing knights
    friendlies: List of (x,y) coords for placing owned pieces
    dimensions: Board dimensions
-   showLabels: Show content (highlight is always shown)
+   showLabels: Show content labels
       reverse: Use 'reverse' (enemy) highlighting
 
     """
@@ -35,21 +35,29 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         # Setup highlighting scheme
         X = "L" if showLabels else "H"
         if reverse:
+            # In 'reverse' color, the 4th pass marks the best squares to be on if you
+            #   are a defending piece. These squares take a long time to reach for an
+            #   attacking knight. Though there are further squares that may take longer, 
+            #   in terms of a typical chessboard, some of these destinations are close
+            #   enough the knight's starting square that it really presents a challenge.
             content = [
                 ("1", Colors.color(f"{X}4")),
                 ("2", Colors.color(f"{X}3")),
                 ("3", Colors.color(f"{X}2")),
-                ("4", Colors.color(f"{X}1")),
+                ("4", Colors.color(f"{X}1")), # [!]
                 ("5", Colors.color(f"{X}6")),
                 ("6", Colors.color(f"{X}5")),
                 ("7", Colors.color(f"{X}7")),
             ]
         else:
+            # In normal color, the 4th pass marks some of the worst squares to reach if
+            #   are a knight on the offence. Inversely to the logic above, these squares
+            #   take the longest time to reach of any nearby destination.
             content = [
                 ("1", Colors.color(f"{X}1")),
                 ("2", Colors.color(f"{X}2")),
                 ("3", Colors.color(f"{X}3")),
-                ("4", Colors.color(f"{X}4")),
+                ("4", Colors.color(f"{X}4")), # [!]
                 ("5", Colors.color(f"{X}5")),
                 ("6", Colors.color(f"{X}6")),
                 ("7", Colors.color(f"{X}7")),
@@ -71,16 +79,31 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         """Returns the color of a piece (dark/light square)."""
 
 
-    # Initialize the grid
+    # Initialize the grid and success detector
     g = Grid(dimensions)
+    successful = True
     # Place friendlies
-    for f in friendlies:
-        g.put(f, "F", Colors.square_color(f))
+    for friend in friendlies:
+        # Test for validity
+        if g.test(friend, purpose="place friend"):
+            g.put(friend, "F", Colors.square_color(friend))
+        else:
+            successful = False
     # Place knights and color the map according to movement
-    for square in knights:
-        _gen(g, square)
-    # Print to stdout
-    print(g.display(showLabels=showLabels))
+    for knight in knights:
+        # Test for validity
+        if g.test(knight, purpose="place knight"):
+            g.put(knight, "N", Colors.square_color(knight))
+            _gen(g, knight)
+        else:
+            successful = False
+    # Print to stdout if success is detected
+    if successful:
+        print(
+            g.display(
+                showLabels=showLabels,
+            )
+        )
 
 
 
