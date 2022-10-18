@@ -49,7 +49,7 @@ class Grid:
             )
             assert all(valid)
             result = True
-        # Scary-colored error message for out-of-bounds coordinates 
+        # Scary-colored error message for out-of-bounds coordinates
         except AssertionError as e:
             if not silent:
                 color = Colors.color("L4")
@@ -111,7 +111,7 @@ class Grid:
             Generate a list of squares that are a knight's move from the square(s)
                 provided. General formula is as follows:
                  
-                >       N(a,b) = (x±a, y±b) ∪ (x±b, y±a)
+                >       N(x,y) = (x±a, y±b) ∪ (x±b, y±a)
                 >         for a=1, b=2
                  
         """

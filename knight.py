@@ -37,7 +37,7 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         if reverse:
             # In 'reverse' color, the 4th pass marks the best squares to be on if you
             #   are a defending piece. These squares take a long time to reach for an
-            #   attacking knight. Though there are further squares that may take longer, 
+            #   attacking knight. Though there are further squares that may take longer,
             #   in terms of a typical chessboard, some of these destinations are close
             #   enough the knight's starting square that it really presents a challenge.
             content = [
@@ -106,10 +106,9 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         )
 
 
-
 if __name__ == "__main__":
 
-    # Setup parameters
+    # NOTE Edit this block to modify the output parameters.
     knights = [
         (3,3),
     ]

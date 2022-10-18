@@ -1,11 +1,23 @@
 # Knight Map
 
 author: [paulpls](https://github.com/paulpls)
+license: [GPL 3.0](./LICENSE.md)
 
 
 ## PURPOSE
 
-Generates a map based on the movements of the knight piece in chess. The current location of the knight is marked on the board, and each square is labeled according to the number of moves it would take to reach it.
+Generates a map based on the movements of the knight piece in chess.
+
+Given coordinates `(x,y)`, the knight can move to squares within the following set:
+
+                                ⎛              ⎞     ⎛              ⎞
+                     N(x,y)  =  ⎜ X ± A, Y ± B ⎟  ⋃  ⎜ X ± B, Y ± A ⎟
+                                ⎝              ⎠     ⎝              ⎠
+                             for a=1, b=2
+
+The knight's complex movement gives rise to many interesting patterns and scenarios. By making these patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around the board.
+
+Output settings can be modified in at the bottom of `knight.py`. By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied. These settings will eventually be turned into command-line options as described below.
 
 
 ## SYNOPSIS
