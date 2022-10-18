@@ -24,7 +24,7 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         Show a map with knights placed arbitrarily on the board.
             
       knights: List of (x,y) coords for placing knights
-   friendlies: List of (x,y) coords for placing owned pieces
+   friendlies: List of (x,y) coords for placing friendly pieces
    dimensions: Board dimensions
    showLabels: Show content labels
       reverse: Use 'reverse' (enemy) highlighting
@@ -35,29 +35,30 @@ def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reve
         # Setup highlighting scheme
         X = "L" if showLabels else "H"
         if reverse:
-            # In 'reverse' color, the 4th pass marks the best squares to be on if you
+            # In 'reverse' color, the 4th pass marks the BEST squares to be on if you
             #   are a defending piece. These squares take a long time to reach for an
             #   attacking knight. Though there are further squares that may take longer,
             #   in terms of a typical chessboard, some of these destinations are close
-            #   enough the knight's starting square that it really presents a challenge.
+            #   enough to the knight's starting square that it can really present a
+            #   difficulty getting there without sacrificing time,
             content = [
                 ("1", Colors.color(f"{X}4")),
                 ("2", Colors.color(f"{X}3")),
                 ("3", Colors.color(f"{X}2")),
-                ("4", Colors.color(f"{X}1")), # [!]
+                ("4", Colors.color(f"{X}1")), # [!] Ideal squares
                 ("5", Colors.color(f"{X}6")),
                 ("6", Colors.color(f"{X}5")),
                 ("7", Colors.color(f"{X}7")),
             ]
         else:
-            # In normal color, the 4th pass marks some of the worst squares to reach if
+            # In normal color, the 4th pass marks some of the WORST squares to reach if
             #   are a knight on the offence. Inversely to the logic above, these squares
             #   take the longest time to reach of any nearby destination.
             content = [
                 ("1", Colors.color(f"{X}1")),
                 ("2", Colors.color(f"{X}2")),
                 ("3", Colors.color(f"{X}3")),
-                ("4", Colors.color(f"{X}4")), # [!]
+                ("4", Colors.color(f"{X}4")), # [!] Inopportune squares
                 ("5", Colors.color(f"{X}5")),
                 ("6", Colors.color(f"{X}6")),
                 ("7", Colors.color(f"{X}7")),
