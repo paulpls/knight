@@ -12,7 +12,7 @@ class Grid:
         def _generate(dimensions):
             """Helper method for generating the grid."""
             xmax, ymax = dimensions
-            content = " "
+            content = None
             # Create new squares, alternating the colors in a checkered pattern.
             grid = {}
             for x in range(xmax):
@@ -86,7 +86,7 @@ class Grid:
             square.color = color
 
 
-    def generate(self, squares=[(3,4)], place=False, content=None, color=None):
+    def generate(self, squares=[(3,4)], put=False, content=None, color=None):
         """
             Generate a list of squares that are a knight's move from the square(s)
                 provided. General formula is as follows:
@@ -130,18 +130,20 @@ class Grid:
                     out.append(s)
             return out
     
+        # Get list of next squares
         next = []
         # Begin with provided squares
         for square in squares:
             # Generate new squares
             for new in _gen(square):
                 # Find new squares in grid
-                gridSquare = self.find(new)
+                gridSquare = self.get(new)
                 if gridSquare is not None:
-                    if place: 
+                    if put: 
                         if _replace(gridSquare, content):
-                            self.place(new, content, color)
+                            self.put(new, content, color)
                             next.append(new)
+        # Return list of squares
         return next
 
 
