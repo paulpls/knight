@@ -2,7 +2,7 @@ from random import randint
 from .color import Colors
 
 
-class KnightGrid:
+class Grid:
 
     def __init__(self, dimensions=(8,8)):
         """
