@@ -88,10 +88,10 @@ if __name__ == "__main__":
 
     # Setup parameters
     knights = [
-        (15,15),
+        (3,3),
     ]
     friendlies = []
-    dimensions = (32,32)
+    dimensions = (8,8)
     showLabels = True
     reverse = False
 
