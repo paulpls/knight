@@ -1,5 +1,5 @@
 from random import randint
-from .color import Colors
+from ..color import Colors
 
 
 class Grid:
