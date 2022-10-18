@@ -38,6 +38,14 @@ class KnightGrid:
         self.xmax, self.ymax = dimensions
 
 
+    def get(self, coords):
+        """
+            Get a square from the grid using the provided (x,y) coordinates.
+
+        """
+        return self.grid.get(coords, None)
+
+
 
 class Square:
 
@@ -49,6 +57,14 @@ class Square:
         self.color = color
         self.highlight = highlight
         self.content = content
+
+
+    def isEmpty(self):
+        """
+            Returns `True` if square has no content.
+
+        """
+        return self.content is None
 
 
     def display(self, visible=True):
