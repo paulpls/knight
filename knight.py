@@ -15,98 +15,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
-from app.grid import Grid
-from app.color import Colors
-
-
-def main(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reverse=False):
-    """
-        Show a map with knights placed arbitrarily on the board.
-            
-      knights: List of (x,y) coords for placing knights
-   friendlies: List of (x,y) coords for placing friendly pieces
-   dimensions: Board dimensions
-   showLabels: Show content labels
-      reverse: Use 'reverse' (enemy) highlighting
-
-    """
-    def _gen(grid, square):
-        """Place the knight on `square` and color the map according to its movement."""
-        # Setup highlighting scheme
-        X = "L" if showLabels else "H"
-        if reverse:
-            # In 'reverse' color, the 4th pass marks the BEST squares to be on if you
-            #   are a defending piece. These squares take a long time to reach for an
-            #   attacking knight. Though there are further squares that may take longer,
-            #   in terms of a typical chessboard, some of these destinations are close
-            #   enough to the knight's starting square that it can really present a
-            #   difficulty getting there without sacrificing time.
-            content = [
-                ("1", Colors.color(f"{X}4")),
-                ("2", Colors.color(f"{X}3")),
-                ("3", Colors.color(f"{X}2")),
-                ("4", Colors.color(f"{X}1")), # [!] Ideal squares
-                ("5", Colors.color(f"{X}6")),
-                ("6", Colors.color(f"{X}5")),
-                ("7", Colors.color(f"{X}7")),
-            ]
-        else:
-            # In normal color, the 4th pass marks some of the WORST squares to reach if
-            #   are a knight on the offence. Inversely to the logic above, these squares
-            #   take the longest time to reach of any nearby destination.
-            content = [
-                ("1", Colors.color(f"{X}1")),
-                ("2", Colors.color(f"{X}2")),
-                ("3", Colors.color(f"{X}3")),
-                ("4", Colors.color(f"{X}4")), # [!] Inopportune squares
-                ("5", Colors.color(f"{X}5")),
-                ("6", Colors.color(f"{X}6")),
-                ("7", Colors.color(f"{X}7")),
-            ]
-        # Setup initial square
-        N = square
-        g.put(N, "N", Colors.square_color(N))
-        # Add the initial square to a list so we can generate more
-        N = [N]
-        for c in content:
-            N = g.generate(
-                squares = N, 
-                put = True, 
-                content = c[0], 
-                color = c[1],
-            )
-    
-    def _color():
-        """Returns the color of a piece (dark/light square)."""
-
-
-    # Initialize the grid and success detector
-    g = Grid(dimensions)
-    successful = True
-    # Place friendlies
-    for friend in friendlies:
-        # Test for validity
-        if g.test(friend, purpose="place friend"):
-            g.put(friend, "F", Colors.square_color(friend))
-        else:
-            successful = False
-    # Place knights and color the map according to movement
-    for knight in knights:
-        # Test for validity
-        if g.test(knight, purpose="place knight"):
-            g.put(knight, "N", Colors.square_color(knight))
-            _gen(g, knight)
-        else:
-            successful = False
-    # Print to stdout if success is detected
-    if successful:
-        print(
-            g.display(
-                showLabels=showLabels,
-            )
-        )
-
-
+from app import Runtime
 if __name__ == "__main__":
 
     # NOTE Edit this block to modify the output parameters.
@@ -119,7 +28,7 @@ if __name__ == "__main__":
     reverse = False
 
     # Do the thing
-    main(
+    Runtime.run(
         knights = knights,
         friendlies = friendlies,
         dimensions = dimensions,
