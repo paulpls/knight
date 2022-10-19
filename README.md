@@ -18,7 +18,7 @@ Given coordinates `(x,y)`, the knight can move to squares within the following s
   
 The knight's complex movement gives rise to many interesting patterns and scenarios. Because the vector is not a pair of even or odd numbers, the knight is forced to change color each time it moves. Due to this, it can only attack squares of an opposite color to its own. Moreover, once the knight moves, it will be able to attack only the same colored squares as that from which it came.
   
-This color-swapping compulsion makes some squares quickly reachable, but can be unforgiving in other cases. By making these movement patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around its environment.
+This color-swapping compulsion makes some squares quickly reachable, but can be unforgiving in other cases. By making these movement patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around its environment. The movement vector can also be changed to allow the study of other jumping pieces.
   
 Output settings can be changed by modifying the parameters in [knight.py](./knight.py#L21). By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied. These settings will eventually be turned into command-line options as described below.
   
