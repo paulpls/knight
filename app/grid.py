@@ -60,9 +60,9 @@ class Grid:
             x,y = coords
             valid = (
                 x >= 0,
-                x <= self.xmax,
+                x < self.xmax,
                 y >= 0,
-                y <= self.ymax,
+                y < self.ymax,
             )
             assert all(valid)
             result = True
