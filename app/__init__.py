@@ -22,7 +22,7 @@ from app.color import Colors
 class Runtime:
 
     @staticmethod
-    def run(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reverse=False):
+    def run(knights=[(3,3)], friendlies=[], dimensions=(8,8), showLabels=True, reverse=False, vector=(1,2)):
         """
             Show a map with knights placed arbitrarily on the board.
                 
@@ -33,8 +33,12 @@ class Runtime:
           reverse: Use 'reverse' (enemy) highlighting
     
         """
-        def _gen(grid, square):
-            """Place the knight on `square` and color the map according to its movement."""
+        def _gen(grid, square, vector):
+            """
+                Place the knight on `square` and color the map according to the movement
+                defined by `vector`. Defaults to (1,2).
+
+            """
             # Setup highlighting scheme
             X = "L" if showLabels else "H"
             if reverse:
@@ -77,6 +81,7 @@ class Runtime:
                     put = True, 
                     content = c[0], 
                     color = c[1],
+                    vector = vector,
                 )
         
         def _color():
@@ -98,7 +103,7 @@ class Runtime:
             # Test for validity
             if g.test(knight, purpose="place knight"):
                 g.put(knight, "N", Colors.square_color(knight))
-                _gen(g, knight)
+                _gen(g, knight, vector=vector)
             else:
                 successful = False
         # Print to stdout if success is detected

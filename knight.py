@@ -26,6 +26,7 @@ if __name__ == "__main__":
     dimensions = (8,8)
     showLabels = True
     reverse = False
+    vector = (1,2)
 
     # Do the thing
     Runtime.run(
@@ -34,6 +35,7 @@ if __name__ == "__main__":
         dimensions = dimensions,
         showLabels = showLabels,
         reverse = reverse,
+        vector = vector,
     )
 
 

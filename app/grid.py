@@ -123,13 +123,16 @@ class Grid:
             square.color = color
 
 
-    def generate(self, squares=[(3,4)], put=False, content=None, color=None):
+    def generate(self, squares=[(3,4)], put=False, content=None, color=None, vector=(1,2)):
         """
             Generate a list of squares that are a knight's move from the square(s)
                 provided. General formula is as follows:
                  
                 >       N(x,y) = (x±a, y±b) ∪ (x±b, y±a)
                 >         for a=1, b=2
+
+
+            Using `vector`, the movement values can be changed. Order does not matter.
                  
         """
         def _replace(square, content):
@@ -143,15 +146,16 @@ class Grid:
                 return True
     
         def _gen(square):
-            """Generate new squares based on knight movements."""
+            """Generate new squares based on movements defined by `vector`."""
             out = []
             x,y = square
+            a,b = vector
             # Get a new list of available squares according to the set defined above
             for s in [
-                (x+1, y+2), (x+1, y-2), # +1,+2  +1,-2
-                (x-1, y+2), (x-1, y-2), # -1,+2  -1,-2
-                (x+2, y+1), (x+2, y-1), # +2,+1  +2,-1
-                (x-2, y+1), (x-2, y-1), # -2,+1  -2,-2
+                (x+a, y+b), (x+a, y-b), # +a,+b  +a,-b
+                (x-a, y+b), (x-a, y-b), # -a,+b  -a,-b
+                (x+b, y+a), (x+b, y-a), # +b,+a  +b,-a
+                (x-b, y+a), (x-b, y-a), # -b,+a  -b,-b
             ]:
                 if self.test(s, silent=True):
                     out.append(s)
