@@ -2,9 +2,9 @@
   
 # Knight Map
   
+version: 1.0.0  
 author: [paulpls](https://github.com/paulpls)  
 license: [GPL 3.0](./LICENSE.md)  
-  
   
 
 ## PURPOSE
