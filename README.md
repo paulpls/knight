@@ -13,9 +13,8 @@ Generates a map based on the movements of the knight piece in chess.
   
 Given coordinates `(x,y)`, the knight can move to squares within the following set:
   
-                                                                     
-                     N(x,y)  =  ( x ± a, y ± b )  ∪  ( x ± b, y ± a )
-                             for a=1, b=2
+    N(x,y)  =  ( x ± a, y ± b )  ∪  ( x ± b, y ± a )
+            for a=1, b=2
   
 The knight's complex movement gives rise to many interesting patterns and scenarios. Because the vector is not a pair of even or odd numbers, the knight is forced to change color each time it moves. Due to this, it can only attack squares of an opposite color to its own. Moreover, once the knight moves, it will be able to attack only the same colored squares as that from which it came.
   
