@@ -18,15 +18,30 @@
 from app import Runtime
 if __name__ == "__main__":
 
-    # NOTE Edit this block to modify the output parameters.
+    ############################################################
+    #                                                          #
+    #    Edit this block to modify the output parameters.      #
+    #                                                          #
+    # List of (x,y) coordinates for knights on the board
     knights = [
         (3,3),
     ]
+    # List of (x,y) coordinates for friendly pieces on the board
     friendlies = []
+    # Board dimensions
     dimensions = (8,8)
+    # Show numeric labels (pieces are always shown)
     showLabels = True
+    # Use 'reverse' highlighting
     reverse = False
+    # Movement vector
+    # If both values are even or both are odd, the movement will
+    # only travel between like-colored squares.
     vector = (1,2)
+    #                                                          #
+    #    ------------------------------------------------      #
+    #                                                          #
+    ############################################################
 
     # Do the thing
     Runtime.run(
