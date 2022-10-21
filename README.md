@@ -50,6 +50,7 @@ The following options will be available for modifying the command output.
 
 ## DEPENDENCIES
 - python *(3.8.10)*
+- color terminal emulator *(eg xterm)*
   
 
   
