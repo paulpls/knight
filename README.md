@@ -20,7 +20,7 @@ The knight's complex movement gives rise to many interesting patterns and scenar
   
 This color-swapping compulsion makes some squares quickly reachable, but can be unforgiving in other cases. By making these movement patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around its environment. The movement vector can also be changed to allow the study of other jumping pieces.
   
-Output settings can be changed by modifying the parameters in [knight.py](./knight.py#L23). By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied. The movement vector defaults to (1,2), but it can be changed to any pair of positive, non-zero integers.  
+Output settings can be changed by modifying the parameters in [knight.py](./knight.py#L23). By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied. The movement vector *(a,b)* defaults to `(1,2)`, but it can be changed to any pair of positive, non-zero integers.  
   
   
   
