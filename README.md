@@ -3,7 +3,7 @@
 # Knight Map
   
 version: 1.0.0  
-author: [paulpls](https://github.com/paulpls)  
+author: Paul Clayberg ([github](https://github.com/paulpls))  
 license: [GPL 3.0](./LICENSE.md)  
   
 
@@ -40,7 +40,7 @@ python knight.py
   
 ## LICENSE
   
-Copyright (C) 2022  [paulpls](https://github.com/paulpls)
+    Copyright (C) 2022 Paul Clayberg
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
