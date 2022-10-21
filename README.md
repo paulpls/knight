@@ -3,7 +3,7 @@
 # Knight Map
   
 version: 1.0.0  
-author: Paul Clayberg
+author: Paul Clayberg  
 license: [GPL 3.0](./LICENSE.md)  
   
 
