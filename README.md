@@ -20,7 +20,7 @@ The knight's complex movement gives rise to many interesting patterns and scenar
   
 This color-swapping compulsion makes some squares quickly reachable, but can be unforgiving in other cases. By making these movement patterns both visible and configurable, this tool aims to help to provide a better understanding of how the knight maneuvers around its environment. The movement vector can also be changed to allow the study of other jumping pieces.
   
-Output settings can be changed by modifying the parameters in [knight.py](./knight.py#L23). By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied. These settings will eventually be turned into command-line options as described below.
+Output settings can be changed by modifying the parameters in [knight.py](./knight.py#L23). By placing more knights, friendly pieces, or changing the grid dimensions, countless scenarios can be studied.  
   
   
 
@@ -32,22 +32,6 @@ python knight.py
   
   
   
-## OPTIONS (TODO)
-  
-The following options will be available for modifying the command output.
-  
-| flag                                    | behavior                                                                                                                                                                       |
-|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| -l                                      | Display text labels in the squares. Each square is numbered according to how many moves it takes the knight(s) to reach it. This is the default behavior.                      |
-| -L                                      | Do not display text labels. Overrides `-l`.                                                                                                                                    |
-| -h                                      | Highlight the map according to time, i.e. squares that take the same number of moves to reach will be marked similarly.                                                        |
-| -H                                      | Highlight the map in reverse. The map is marked based on how many moves it would take an enemy knight to reach, or capture on, each square. Overrides `-h`.                    |
-| -n <num>                                | Set the number of knights to `num`. Must be greater than zero. Defaults to 1.                                                                                                  |
-| -g `<x>,<y>`                              | Set the grid dimensions to `x,y`. Both values must be greater than zero. Defaults to 8,8.                                                                                      |
-| -f `[(<x0>,<y0>), ...]`                   | Place friendly pieces on each square listed. The knight is unable to move to a piece occupied by a friendly piece, so this option can be used to add complexity to the output. |
-  
-  
-
 ## DEPENDENCIES
 - python *(3.8.10)*
 - color terminal emulator *(eg xterm)*
