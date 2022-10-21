@@ -138,5 +138,8 @@ certs/
 # VS Code
 .vscode/
 
+# Old stuff
+*.old
+
 
 
