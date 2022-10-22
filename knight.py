@@ -22,22 +22,41 @@ if __name__ == "__main__":
     #                                                          #
     #    Edit this block to modify the output parameters.      #
     #                                                          #
+    # 
+
+    # Dimensions
+    xmax = 8
+    ymax = 8
+
+    # Initial position - (x=0, y=0) is top left
+    #          (x=xmax-1, y=ymax-1) is bottom right
+    x = 3
+    y = 3
+
+    # Movement vector
+    a = 1   # If both values are even, or if both are odd, the
+    b = 2   # pieces will only move between like-colored squares.
+
     # List of (x,y) coordinates for knights on the board
     knights = [
-        (3,3),
+        (x,y),
     ]
+
     # List of (x,y) coordinates for friendly pieces on the board
-    friendlies = []
-    # Board dimensions
-    dimensions = (8,8)
+    friendlies = [
+        # Example: Surround piece with friendlies
+        #(x+a, y+b), (x+b, y+a),
+        #(x+a, y-b), (x+b, y-a),
+        #(x-a, y+b), (x-b, y+a),
+        #(x-a, y-b), (x-b, y-a),
+    ]
+
     # Show numeric labels (pieces are always shown)
     showLabels = True
+
     # Use 'reverse' highlighting
     reverse = False
-    # Movement vector
-    # If both values are even or both are odd, the movement will
-    # only travel between like-colored squares.
-    vector = (1,2)
+
     #                                                          #
     #    ------------------------------------------------      #
     #                                                          #
@@ -47,10 +66,10 @@ if __name__ == "__main__":
     Runtime.run(
         knights = knights,
         friendlies = friendlies,
-        dimensions = dimensions,
+        dimensions = (xmax, ymax),
         showLabels = showLabels,
         reverse = reverse,
-        vector = vector,
+        vector = (a,b),
     )
 
 
