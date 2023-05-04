@@ -58,9 +58,8 @@ class Runtime:
                     ("7", Colors.color(f"{X}7")),
                 ]
             else:
-                # In normal color, the 4th pass marks some of the WORST squares to reach if
-                #   are a knight on the offence. Inversely to the logic above, these squares
-                #   take the longest time to reach of any nearby destination.
+                # In normal color, the 4th pass marks some of the WORST squares to attack if
+                #   are a knight on the offence. These squares take the longest to reach.
                 content = [
                     ("1", Colors.color(f"{X}1")),
                     ("2", Colors.color(f"{X}2")),
