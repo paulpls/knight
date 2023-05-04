@@ -107,11 +107,7 @@ class Runtime:
                 successful = False
         # Print to stdout if success is detected
         if successful:
-            print(
-                g.display(
-                    showLabels=showLabels,
-                )
-            )
+            print(g.display(showLabels = showLabels))
 
 
 
